@@ -12,32 +12,58 @@ namespace CodedUINav
 
             BackgroundColor = Color.PowderBlue;
 
-            var textLabel = new Label
+            var noteEditor = new Editor
             {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
+                Placeholder = "Enter Note",
+                BackgroundColor = Color.White,
+                Margin = new Thickness(10)
             };
-            textLabel.SetBinding(Label.TextProperty, nameof(DetailPageViewModel.NoteText));
+            noteEditor.SetBinding(Editor.TextProperty, nameof(DetailPageViewModel.NoteText));
 
-            var exitButton = new Button
+            var saveButton = new Button
             {
-                Text = "Pop",
+                Text = "Save",
                 VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(20),
-                BackgroundColor = Color.Red,
-                TextColor = Color.White,
-                FontSize = 20
-            };
-            exitButton.SetBinding(Button.CommandProperty, nameof(DetailPageViewModel.ExitCommand));
+                Margin = new Thickness(10),
+                BackgroundColor = Color.Green,
+                TextColor = Color.White
 
-            var stackLayout = new StackLayout
+            };
+            saveButton.SetBinding(Button.CommandProperty, nameof(DetailPageViewModel.SaveCommand));
+
+            var deleteButton = new Button
             {
-                Margin = new Thickness(20, 40)
+                Text = "Delete",
+                VerticalOptions = LayoutOptions.Center,
+                Margin = new Thickness(10),
+                BackgroundColor = Color.Red,
+                TextColor = Color.White
             };
-            stackLayout.Children.Add(textLabel);
-            stackLayout.Children.Add(exitButton);
+            deleteButton.SetBinding(Button.CommandProperty, nameof(DetailPageViewModel.DeleteCommand));
 
-            Content = stackLayout;
+            var grid = new Grid
+            {
+                Margin = new Thickness(20, 40),
+
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
+                },
+                RowDefinitions =
+                {
+                    new RowDefinition { Height = new GridLength(4, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                }
+            };
+
+            grid.Children.Add(noteEditor, 0, 0);
+            Grid.SetColumnSpan(noteEditor, 2);
+
+            grid.Children.Add(saveButton, 0, 1);
+            grid.Children.Add(deleteButton, 1, 1);
+
+            Content = grid;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -13,8 +14,10 @@ namespace CodedUINav
             SaveNoteCommand = new Command(() =>
             {
                 Notes.Add(new NoteModel { 
+                    Id = Guid.NewGuid().ToString(),
                     Text = NoteText,
-                    Title = NoteText.Length > 45 ? NoteText.Substring(0, 44) + "..." : NoteText
+                    Title = NoteText.Length > 45 ? NoteText.Substring(0, 44) + "..." : NoteText,
+                    Timestamp = DateTime.Now
                 });
                 NoteText = string.Empty;
             },
@@ -29,7 +32,9 @@ namespace CodedUINav
 
                 var detailViewModel = new DetailPageViewModel
                 {
-                    NoteText = SelectedNote.Text
+                    NoteText = SelectedNote.Text,
+                    Notes = Notes,
+                    Id = SelectedNote.Id
                 };
 
                 await Application.Current.MainPage.Navigation.PushAsync(new DetailPage(detailViewModel));
