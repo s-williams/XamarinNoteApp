@@ -111,8 +111,12 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\xamagon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\xamagon.imageset\xamagon.png" />
+    <ImageAsset Include="Assets.xcassets\xamagon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\xamagon.imageset\xamagon.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
