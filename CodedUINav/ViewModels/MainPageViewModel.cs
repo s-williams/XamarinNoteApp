@@ -12,7 +12,10 @@ namespace CodedUINav
 
             SaveNoteCommand = new Command(() =>
             {
-                Notes.Add(new NoteModel { Text = NoteText });
+                Notes.Add(new NoteModel { 
+                    Text = NoteText,
+                    Title = NoteText.Length > 45 ? NoteText.Substring(0, 44) + "..." : NoteText
+                });
                 NoteText = string.Empty;
             },
             () => !string.IsNullOrEmpty(NoteText));

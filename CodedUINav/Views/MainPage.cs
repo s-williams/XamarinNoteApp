@@ -95,7 +95,7 @@ namespace CodedUINav
             static StackLayout LoadTemplate()
             {
                 var textLabel = new Label();
-                textLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Text));
+                textLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Title));
 
                 var frame = new Frame
                 {
