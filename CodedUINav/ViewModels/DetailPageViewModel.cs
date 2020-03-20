@@ -14,16 +14,26 @@ namespace CodedUINav
 
             SaveCommand = new Command(() =>
             {
+                NoteModel foundNote = null;
                 foreach(NoteModel n in Notes)
                 {
                     if(n.Id == Id)
                     {
-                        n.Text = NoteText;
-                        n.Title = NoteText.Length > 45 ? NoteText.Substring(0, 44) + "..." : NoteText;
-                        n.Timestamp = DateTime.Now;
+                        foundNote = n;
+                        Notes.Remove(n);
                         break;
                     }
                 }
+
+                if (foundNote != null)
+                {
+                    foundNote.Text = NoteText;
+                    foundNote.Title = NoteText.Length > 40 ? NoteText.Substring(0, 40) + "..." : NoteText;
+                    foundNote.Timestamp = DateTime.Now;
+                    Notes.Add(foundNote);
+                }
+
+
             },
             () => hasChanged);
         }

@@ -16,7 +16,7 @@ namespace CodedUINav
                 Notes.Add(new NoteModel { 
                     Id = Guid.NewGuid().ToString(),
                     Text = NoteText,
-                    Title = NoteText.Length > 45 ? NoteText.Substring(0, 44) + "..." : NoteText,
+                    Title = NoteText.Length > 40 ? NoteText.Substring(0, 40) + "..." : NoteText,
                     Timestamp = DateTime.Now
                 });
                 NoteText = string.Empty;
