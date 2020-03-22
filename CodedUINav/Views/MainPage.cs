@@ -94,13 +94,38 @@ namespace CodedUINav
 
             static StackLayout LoadTemplate()
             {
+
+                var layout = new StackLayout();
+
+                layout.Orientation = StackOrientation.Horizontal;
+
+                var timeLabel = new Label();
+                timeLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Timestamp));
+
                 var textLabel = new Label();
                 textLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Title));
+
+                var time = new Frame
+                {
+                    VerticalOptions = LayoutOptions.Center,
+                    Content = timeLabel
+                };
+
+                var text = new Frame
+                {
+                    VerticalOptions = LayoutOptions.Center,
+                    Content = textLabel
+                };
 
                 var frame = new Frame
                 {
                     VerticalOptions = LayoutOptions.Center,
-                    Content = textLabel
+                    Content = new StackLayout
+                    {
+                        VerticalOptions = LayoutOptions.Center,
+                        Orientation = StackOrientation.Horizontal,
+                        Children = {time, text},
+                    }
                 };
 
                 return new StackLayout
