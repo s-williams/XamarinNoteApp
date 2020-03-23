@@ -100,22 +100,10 @@ namespace CodedUINav
                 layout.Orientation = StackOrientation.Horizontal;
 
                 var timeLabel = new Label();
-                timeLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Timestamp));
+                timeLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Time));
 
                 var textLabel = new Label();
                 textLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Title));
-
-                var time = new Frame
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Content = timeLabel
-                };
-
-                var text = new Frame
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Content = textLabel
-                };
 
                 var frame = new Frame
                 {
@@ -124,7 +112,7 @@ namespace CodedUINav
                     {
                         VerticalOptions = LayoutOptions.Center,
                         Orientation = StackOrientation.Horizontal,
-                        Children = {time, text},
+                        Children = { timeLabel, textLabel},
                     }
                 };
 

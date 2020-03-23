@@ -13,11 +13,13 @@ namespace CodedUINav
 
             SaveNoteCommand = new Command(() =>
             {
-                Notes.Add(new NoteModel { 
+                Notes.Add(new NoteModel
+                {
                     Id = Guid.NewGuid().ToString(),
                     Text = NoteText,
                     Title = NoteText.Length > 40 ? NoteText.Substring(0, 40) + "..." : NoteText,
-                    Timestamp = DateTime.Now
+                    Timestamp = DateTime.Now,
+                    Time = DateTime.Now.ToString("dd MMM yyyy")
                 });
                 NoteText = string.Empty;
             },
