@@ -103,6 +103,7 @@ namespace CodedUINav
                 timeLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Time));
 
                 var textLabel = new Label();
+                textLabel.FontAttributes = FontAttributes.Bold;
                 textLabel.SetBinding(Label.TextProperty, nameof(NoteModel.Title));
 
                 var frame = new Frame
