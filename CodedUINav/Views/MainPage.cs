@@ -12,11 +12,6 @@ namespace CodedUINav
 
             BindingContext = new MainPageViewModel();
 
-            var xamagonImage = new Image
-            {
-                Source = "xamagon.png"
-            };
-
             var noteEditor = new Editor
             {
                 Placeholder = "Enter Note",
@@ -63,23 +58,19 @@ namespace CodedUINav
                 },
                 RowDefinitions =
                 {
-                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
                     new RowDefinition { Height = new GridLength(2.5, GridUnitType.Star) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
-                    new RowDefinition { Height = new GridLength(2.0, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(3.0, GridUnitType.Star) },
                 }
             };
 
-            grid.Children.Add(xamagonImage, 0, 0);
-            Grid.SetColumnSpan(xamagonImage, 2);
-
-            grid.Children.Add(noteEditor, 0, 1);
+            grid.Children.Add(noteEditor, 0, 0);
             Grid.SetColumnSpan(noteEditor, 2);
 
-            grid.Children.Add(saveButton, 0, 2);
-            grid.Children.Add(deleteButton, 1, 2);
+            grid.Children.Add(saveButton, 0, 1);
+            grid.Children.Add(deleteButton, 1, 1);
 
-            grid.Children.Add(collectionView, 0, 3);
+            grid.Children.Add(collectionView, 0, 2);
             Grid.SetColumnSpan(collectionView, 2);
 
             Content = grid;
