@@ -17,15 +17,13 @@ namespace CodedUINav
                 {
                     Id = Guid.NewGuid().ToString(),
                     Text = NoteText,
-                    Title = NoteText.Length > 40 ? NoteText.Substring(0, 40) + "..." : NoteText,
+                    Title = Common.createTitle(NoteText),
                     Timestamp = DateTime.Now,
                     Time = DateTime.Now.ToString("dd MMM yyyy")
                 });
                 NoteText = string.Empty;
             },
             () => !string.IsNullOrEmpty(NoteText));
-
-            EraseNotesCommand = new Command(() => Notes.Clear());
 
             NoteSelectedCommand = new Command(async () =>
             {
@@ -75,6 +73,5 @@ namespace CodedUINav
 
         public Command NoteSelectedCommand { get; }
         public Command SaveNoteCommand { get; }
-        public Command EraseNotesCommand { get; }
     }
 }

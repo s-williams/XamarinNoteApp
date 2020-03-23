@@ -28,7 +28,7 @@ namespace CodedUINav
                 if (foundNote != null)
                 {
                     foundNote.Text = NoteText;
-                    foundNote.Title = NoteText.Length > 40 ? NoteText.Substring(0, 40) + "..." : NoteText;
+                    foundNote.Title = Common.createTitle(NoteText);
                     foundNote.Timestamp = DateTime.Now;
                     foundNote.Time = DateTime.Now.ToString("dd MMM yyyy");
                     Notes.Add(foundNote);
