@@ -33,10 +33,22 @@ namespace CodedUINav
                     foundNote.Time = DateTime.Now.ToString("dd MMM yyyy");
                     Notes.Add(foundNote);
                 }
-
-
+                ExitCommand.Execute(null);
             },
             () => hasChanged);
+
+            DeleteCommand = new Command(() =>
+            {
+                foreach (NoteModel n in Notes)
+                {
+                    if (n.Id == Id)
+                    {
+                        Notes.Remove(n);
+                        break;
+                    }
+                }
+                ExitCommand.Execute(null);
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
