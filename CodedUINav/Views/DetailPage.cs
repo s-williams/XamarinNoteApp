@@ -16,7 +16,7 @@ namespace CodedUINav
             {
                 Placeholder = "Enter Note",
                 BackgroundColor = Color.White,
-                Margin = new Thickness(10)
+                Margin = new Thickness(2)
             };
             noteEditor.SetBinding(Editor.TextProperty, nameof(DetailPageViewModel.NoteText));
 
@@ -24,7 +24,7 @@ namespace CodedUINav
             {
                 Text = "Save",
                 VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(10),
+                Margin = new Thickness(2),
                 BackgroundColor = Color.Green,
                 TextColor = Color.White
 
